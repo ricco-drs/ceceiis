@@ -105,7 +105,7 @@ export default function Home() {
 
     return (
       <g onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave} style={{ cursor: 'pointer' }}>
-        <rect x={x} y={y} width={width} height={height} fill={barColor} rx={4} ry={4} />
+        <rect x={x} y={y} width={width} height={height} fill={barColor} />
         <circle cx={x + width / 2} cy={y} r={radius + 2} fill="#ffffff" />
         <circle cx={x + width / 2} cy={y} r={radius} fill="#e2e8f0" />
         <defs>
@@ -132,7 +132,7 @@ export default function Home() {
             style={{ overflow: 'visible', pointerEvents: 'none' }}
           >
             <div className="flex flex-col items-center w-full h-full drop-shadow-md">
-              <div className="bg-[#2B78C5] text-white px-4 py-2.5 text-center flex flex-col leading-tight whitespace-nowrap rounded-sm">
+              <div className="bg-[#2B78C5] text-white px-4 py-2.5 text-center flex flex-col leading-tight whitespace-nowrap rounded-none">
                 <span className="text-[14px] font-black tracking-tight uppercase">{payload.presidentName}</span>
                 <div className="h-px bg-white/20 w-full my-1" />
                 <span className="text-[12px] font-bold tracking-wide uppercase">Cantidad de votos: {payload.votes.toLocaleString('es-PE')}</span>
@@ -153,7 +153,7 @@ export default function Home() {
     if (!result) return null;
     return (
       <g transform={`translate(${x - 20},${y + 5})`}>
-        <rect width="40" height="40" fill="white" rx="4" />
+        <rect width="40" height="40" fill="white" />
         <image
           href={result.logo}
           x="2"
@@ -215,36 +215,36 @@ export default function Home() {
               </div>
 
               <div className="space-y-4">
-                <div className="rounded-xl border border-slate-200 bg-slate-50 p-4">
+                <div className="rounded-none border border-slate-200 bg-slate-50 p-4">
                   <div className="flex items-center justify-between text-sm font-semibold text-slate-600">
                     <span>Votaron</span>
                     <span className="text-[#0F172A]">{(summary.total ?? 0).toLocaleString()}</span>
                   </div>
-                  <div className="mt-2 h-2 overflow-hidden rounded-full bg-slate-200">
-                    <div className="h-full rounded-full bg-[#0F172A]" style={{ width: `${participationValue}%` }} />
+                  <div className="mt-2 h-2 overflow-hidden rounded-none bg-slate-200">
+                    <div className="h-full rounded-none bg-[#0F172A]" style={{ width: `${participationValue}%` }} />
                   </div>
                 </div>
 
-                <div className="rounded-xl border border-slate-200 bg-white p-4">
+                <div className="rounded-none border border-slate-200 bg-white p-4">
                   <div className="flex items-center justify-between text-sm font-semibold text-slate-600">
                     <span>No votaron</span>
                     <span className="text-slate-900">{((summary.eligible ?? 0) - (summary.total ?? 0)).toLocaleString()}</span>
                   </div>
-                  <div className="mt-2 h-2 overflow-hidden rounded-full bg-slate-200">
-                    <div className="h-full rounded-full bg-slate-400" style={{ width: `${100 - participationValue}%` }} />
+                  <div className="mt-2 h-2 overflow-hidden rounded-none bg-slate-200">
+                    <div className="h-full rounded-none bg-slate-400" style={{ width: `${100 - participationValue}%` }} />
                   </div>
                 </div>
 
                 <div className="grid gap-3 sm:grid-cols-3">
-                  <div className="rounded-xl border border-slate-200 bg-white p-4">
+                  <div className="rounded-none border border-slate-200 bg-white p-4">
                     <p className="text-[10px] uppercase tracking-wide text-slate-500 font-bold">Personas que votaron</p>
                     <p className="mt-2 text-3xl font-black text-[#0F172A]">{summary.total ?? 0}</p>
                   </div>
-                  <div className="rounded-xl border border-slate-200 bg-white p-4">
+                  <div className="rounded-none border border-slate-200 bg-white p-4">
                     <p className="text-[10px] uppercase tracking-wide text-slate-500 font-bold">No votaron</p>
                     <p className="mt-2 text-3xl font-black text-[#0F172A]">{(summary.eligible ?? 0) - (summary.total ?? 0)}</p>
                   </div>
-                  <div className="rounded-xl border border-slate-200 bg-white p-4">
+                  <div className="rounded-none border border-slate-200 bg-white p-4">
                     <p className="text-[10px] uppercase tracking-wide text-slate-500 font-bold">Total Padrón</p>
                     <p className="mt-2 text-3xl font-black text-[#0F172A]">{summary.eligible ?? 0}</p>
                   </div>
@@ -274,7 +274,7 @@ export default function Home() {
                 key={list.id}
                 href={`/listas/${list.id}`}
                 target="_blank"
-                className="group flex items-center gap-4 rounded border border-slate-200 bg-white p-4 transition-all hover:border-slate-300 hover:bg-slate-50"
+                className="group flex items-center gap-4 rounded-none border border-slate-200 bg-white p-4 transition-all hover:border-slate-300 hover:bg-slate-50"
               >
                 <div className="h-12 w-12 flex-shrink-0 flex items-center justify-center bg-white border border-slate-100 p-1">
                   <img src={list.logo} alt={list.name} className="w-full h-full object-contain" />
@@ -400,7 +400,7 @@ export default function Home() {
             <div className="flex flex-col justify-center pl-2 h-10">
               <span className="text-[#0F172A] font-black text-[13px] leading-tight">Elecciones</span>
               <span className="text-[#0F172A] font-black text-[13px] leading-tight">Generales</span>
-              <div className="mt-0.5 border border-blue-300 rounded px-1.5 py-0.5 w-fit bg-blue-50/50">
+              <div className="mt-0.5 border border-blue-300 rounded-none px-1.5 py-0.5 w-fit bg-blue-50/50">
                 <span className="text-[9px] text-[#2B78C5] font-bold tracking-tight block">FIIS - UNI 2026</span>
               </div>
             </div>

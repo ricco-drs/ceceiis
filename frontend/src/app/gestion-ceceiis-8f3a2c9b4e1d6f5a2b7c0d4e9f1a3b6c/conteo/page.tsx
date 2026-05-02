@@ -61,7 +61,7 @@ export default function ConteoPage() {
   }, []);
 
   if (!mounted || loading) return (
-    <div className="flex flex-col items-center justify-center py-32 bg-white rounded-xl border border-slate-100 shadow-sm">
+    <div className="flex flex-col items-center justify-center py-32 bg-white rounded-none border border-slate-100 shadow-sm">
       <div className="relative w-24 h-24 flex items-center justify-center">
         <div className="absolute inset-0 border-[4px] border-slate-100 border-t-[#2B78C5] rounded-full animate-spin"></div>
         <img src="/images/ceceiis.png" alt="Logo" className="w-12 h-12 object-contain relative z-10" />

@@ -54,7 +54,7 @@ export default function ListaClient({ id }: { id: string }) {
             <div className="flex flex-col justify-center pl-2 h-10">
               <span className="text-[#0F172A] font-black text-[13px] leading-tight uppercase">Elecciones</span>
               <span className="text-[#0F172A] font-black text-[13px] leading-tight uppercase">Generales</span>
-              <div className="mt-0.5 border border-blue-300 rounded px-1.5 py-0.5 w-fit bg-blue-50/50">
+              <div className="mt-0.5 border border-blue-300 rounded-none px-1.5 py-0.5 w-fit bg-blue-50/50">
                 <span className="text-[9px] text-[#2B78C5] font-bold tracking-tight block uppercase">FIIS - UNI 2026</span>
               </div>
             </div>
@@ -141,7 +141,7 @@ export default function ListaClient({ id }: { id: string }) {
                       className="bg-white border border-slate-200 p-4 flex flex-col hover:border-[#2B78C5] transition-colors group w-full sm:w-[calc(50%-8px)] lg:w-[calc(33.333%-11px)]"
                     >
                       <div className="flex gap-3 items-start mb-4">
-                        <div className="w-16 h-16 rounded-full bg-slate-100 border-2 border-slate-200 group-hover:border-[#2B78C5] overflow-hidden flex-shrink-0 flex items-center justify-center transition-colors">
+                        <div className="w-16 h-16 rounded-none bg-slate-100 border-2 border-slate-200 group-hover:border-[#2B78C5] overflow-hidden flex-shrink-0 flex items-center justify-center transition-colors">
                           {member.photo ? (
                             <img src={driveImageUrl(member.photo)} alt={member.name} className="w-full h-full object-cover" />
                           ) : (

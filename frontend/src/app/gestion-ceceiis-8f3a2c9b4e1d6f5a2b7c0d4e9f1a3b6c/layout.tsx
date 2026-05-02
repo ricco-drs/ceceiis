@@ -72,7 +72,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
 
         <div className="flex-1 flex items-center justify-center p-4">
           <div className="max-w-md w-full">
-            <div className="bg-white border border-slate-200 shadow-xl rounded-lg overflow-hidden">
+            <div className="bg-white border border-slate-200 shadow-xl rounded-none overflow-hidden">
               <div className="p-8">
                 <form onSubmit={handleLogin} className="space-y-6">
                   <div>
@@ -90,13 +90,13 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                         placeholder="••••••••••••••••"
-                        className="block w-full pl-12 pr-4 py-4 bg-slate-50 border border-slate-300 rounded-md text-[#0F172A] placeholder-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-[#0F172A] transition-all font-mono"
+                        className="block w-full pl-12 pr-4 py-4 bg-slate-50 border border-slate-300 rounded-none text-[#0F172A] placeholder-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-[#0F172A] transition-all font-mono"
                       />
                     </div>
                   </div>
 
                   {authError && (
-                    <div className="bg-red-50 border border-red-100 text-red-600 text-[11px] font-bold py-3 px-4 rounded-md flex items-center gap-3 animate-shake">
+                    <div className="bg-red-50 border border-red-100 text-red-600 text-[11px] font-bold py-3 px-4 rounded-none flex items-center gap-3 animate-shake">
                       <div className="w-2 h-2 rounded-full bg-red-500" />
                       {authError}
                     </div>
@@ -105,7 +105,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
                   <button
                     type="submit"
                     disabled={isLoggingIn}
-                    className="w-full bg-[#0F172A] hover:bg-[#1E293B] disabled:opacity-50 disabled:cursor-not-allowed text-white font-black py-4 rounded-md transition-all shadow-lg flex items-center justify-center gap-3 uppercase tracking-[0.2em] text-xs"
+                    className="w-full bg-[#0F172A] hover:bg-[#1E293B] disabled:opacity-50 disabled:cursor-not-allowed text-white font-black py-4 rounded-none transition-all shadow-lg flex items-center justify-center gap-3 uppercase tracking-[0.2em] text-xs"
                   >
                     {isLoggingIn ? (
                       <Loader2 className="w-5 h-5 animate-spin" />
@@ -144,7 +144,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
             <div className="flex flex-col justify-center pl-2 h-10">
               <span className="text-[#0F172A] font-black text-[13px] leading-tight uppercase">Elecciones</span>
               <span className="text-[#0F172A] font-black text-[13px] leading-tight uppercase">Generales</span>
-              <div className="mt-0.5 border border-blue-300 rounded px-1.5 py-0.5 w-fit bg-blue-50/50">
+              <div className="mt-0.5 border border-blue-300 rounded-none px-1.5 py-0.5 w-fit bg-blue-50/50">
                 <span className="text-[9px] text-[#2B78C5] font-bold tracking-tight block uppercase">Panel de Administración</span>
               </div>
             </div>
