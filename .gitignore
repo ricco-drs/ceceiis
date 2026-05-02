@@ -1,0 +1,30 @@
+# Frontend
+frontend/node_modules/
+frontend/dist/
+frontend/build/
+frontend/.next/
+
+# Backend
+backend/node_modules/
+backend/venv/
+backend/.venv/
+backend/__pycache__/
+backend/*.pyc
+
+# Variables de entorno
+.env
+.env.local
+backend/.env
+frontend/.env
+frontend/.env.local
+
+# Editor / sistema
+.vscode/
+.DS_Store
+Thumbs.db
+
+node_modules/
+.next/
+.firebase/
+.env
+

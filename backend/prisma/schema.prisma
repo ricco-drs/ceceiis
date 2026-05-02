@@ -1,0 +1,108 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String     @id @default(uuid())
+  username  String     @unique
+  password  String
+  role      Role       @default(ADMIN)
+  logs      AuditLog[]
+}
+
+enum Role {
+  ADMIN
+  SUPERADMIN
+}
+
+model Election {
+  id          String           @id @default(uuid())
+  name        String
+  date        DateTime
+  status      ElectionStatus   @default(ACTIVE)
+  tables      VotingTable[]
+  lists       ElectoralList[]
+}
+
+enum ElectionStatus {
+  PENDING
+  ACTIVE
+  FINISHED
+}
+
+model VotingTable {
+  id          String   @id @default(uuid())
+  tableNumber String   @unique // Ej. "001"
+  faculty     String
+  school      String
+  electionId  String
+  election    Election @relation(fields: [electionId], references: [id])
+  act         Act?
+}
+
+model ElectoralList {
+  id          String          @id @default(uuid())
+  name        String
+  acronym     String?
+  logoUrl     String?
+  color       String?         // Para el gráfico
+  electionId  String
+  election    Election        @relation(fields: [electionId], references: [id])
+  candidates  Candidate[]
+  votes       ActVoteDetail[]
+}
+
+model Candidate {
+  id          String        @id @default(uuid())
+  name        String
+  role        String        // Ej. "Presidente", "Vicepresidente"
+  photoUrl    String?
+  listId      String
+  list        ElectoralList @relation(fields: [listId], references: [id])
+}
+
+model Act {
+  id            String          @id @default(uuid())
+  tableId       String          @unique
+  table         VotingTable     @relation(fields: [tableId], references: [id])
+  status        ActStatus       @default(PENDING)
+  totalVoters   Int
+  validVotes    Int
+  blankVotes    Int
+  nullVotes     Int
+  impugnedVotes Int
+  details       ActVoteDetail[]
+  registeredAt  DateTime        @default(now())
+  updatedAt     DateTime        @updatedAt
+}
+
+enum ActStatus {
+  PENDING
+  COUNTED
+  OBSERVED
+}
+
+model ActVoteDetail {
+  id          String        @id @default(uuid())
+  actId       String
+  act         Act           @relation(fields: [actId], references: [id])
+  listId      String
+  list        ElectoralList @relation(fields: [listId], references: [id])
+  votes       Int
+}
+
+model AuditLog {
+  id          String   @id @default(uuid())
+  userId      String
+  user        User     @relation(fields: [userId], references: [id])
+  action      String   // Ej. "REGISTER_ACT", "UPDATE_ACT"
+  entity      String   // "Act", "User"
+  entityId    String
+  details     Json
+  createdAt   DateTime @default(now())
+}
